@@ -14,7 +14,7 @@ module Api
           if current_user.present?
             render json: { message: 'Success' }, status: :ok
           else
-            render json: { message: 'Failed'}, status: :unauthorized
+            render json: { message: 'Failed' }, status: :unauthorized
           end
         end
       end
