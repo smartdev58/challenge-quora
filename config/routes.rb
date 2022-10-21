@@ -1,3 +1,9 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :answers
+  resources :questions
+  devise_for :users,
+             controllers: {
+               sessions: 'api/v1/users/sessions',
+               registrations: 'api/v1/users/registrations'
+             }
 end
