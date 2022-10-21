@@ -6,7 +6,7 @@ module Api
 
       # GET /answers
       def index
-        @answers = Answer.all
+        @answers = Answer.all.page params[:page]
 
         render json: @answers
       end
@@ -21,7 +21,7 @@ module Api
         @answer = Answer.new(answer_params)
 
         if @answer.save
-          render json: @answer, status: :created, location: @answer
+          render json: @answer, status: :created
         else
           render json: @answer.errors, status: :unprocessable_entity
         end
