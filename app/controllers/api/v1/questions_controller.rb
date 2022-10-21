@@ -8,7 +8,13 @@ module Api
       def index
         @questions = Question.order(:title).page params[:page]
 
-        render json: @questions
+        render json: {
+          current_page: @questions.current_page,
+          per_page: @questions.current_per_page,
+          total_pages: @questions.total_pages,
+          questions: @questions,
+          message: 'OK'
+        }
       end
 
       # GET /questions/1

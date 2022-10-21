@@ -8,7 +8,14 @@ module Api
       def index
         @answers = Answer.all.page params[:page]
 
-        render json: @answers
+        render json: {
+          current_page: @answers.current_page,
+          per_page: @answers.current_per_page,
+          total_pages: @answers.total_pages,
+          answers: @answers,
+          message: 'OK'
+        }
+
       end
 
       # GET /answers/1
